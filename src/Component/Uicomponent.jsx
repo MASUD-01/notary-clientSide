@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import AllData from './AllData';
+import Table from 'react-bootstrap/Table';
 
 
 
@@ -29,10 +31,24 @@ const Uicomponent = () => {
     }, [])
 
     return (
-        <div>
-            {data?.map(da => {
-                return <p>{da.name}</p>
-            })}
+        <div className='p-2 mt-4'>
+            <Table responsive="sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount requested</th>
+                        <th>Deadline</th>
+                        <th>Reason for request</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {data?.map(singledata =>
+                        <AllData singledata={singledata}></AllData>
+                    )}
+                </tbody>
+            </Table>
+
         </div>
     );
 };
